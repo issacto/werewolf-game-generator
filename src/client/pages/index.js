@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Layout from "../components/layout"
 import styles from '../styles/Home.module.css'
 import Router from 'next/router'
 
@@ -9,8 +8,8 @@ function navigate(){
 }
 export default function Home() {
   return (
-    <Layout>
-    <div className={styles.container}>
+  
+    <div >
       <Head>
         <title>Werewolf</title>
         <link xrel="icon" href="/favicon.ico" />
@@ -25,6 +24,5 @@ export default function Home() {
 
      
     </div>
-    </Layout>
   )
 }
