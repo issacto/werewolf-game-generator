@@ -10,6 +10,7 @@ package com.example.demo;
  import java.text.SimpleDateFormat;  
  import java.util.Date;    
  import java.util.ArrayList;
+ import java.util.HashMap; 
  import org.springframework.web.bind.annotation.CrossOrigin;
 
  
@@ -17,7 +18,8 @@ package com.example.demo;
  @RestController
  public class DemoApplication {
     private static int counter = 0;
-    private static  ArrayList<Integer> idList = new ArrayList<Integer>();
+    private static  ArrayList<String> idList = new ArrayList<String>();
+    private static HashMap<String, String> roomSizeMap = new HashMap<String, String>();
 
     public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
@@ -31,7 +33,9 @@ package com.example.demo;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getRoom")
-    public String getRoom(@RequestParam(value = "name", defaultValue = "World") String name) {
+    public String getRoom(@RequestParam(value = "size", defaultValue = "World") String size) {
+        System.out.println("size");
+        System.out.println(size);
         counter+=1;
         //get Time
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
@@ -41,17 +45,26 @@ package com.example.demo;
         System.out.println("Time now"+"   "+finalInput);
         //encode
         String encodedString = Base64.getEncoder().encodeToString(finalInput.getBytes());
-        idList.push(encodedString);
+        idList.add(encodedString);
+        roomSizeMap.put(encodedString ,size);
         return  encodedString;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/hasRoom")
-    public Boolean hasRooms(@RequestParam(value = "name", defaultValue = "World") String name) {
+    public Boolean hasRoom(@RequestParam(value = "id", defaultValue = "World") String id) {
         Boolean isRoomRegistered = false;
-        if(idList.contains(name)){
+        if(idList.contains(id)){
             isRoomRegistered =true;
         }
         return isRoomRegistered;
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getRoomSize")
+    public String getRoomSize(@RequestParam(value = "id", defaultValue = "World") String id) {
+        System.out.println(roomSizeMap.get(id));
+        return roomSizeMap.get(id);
     }
 
 }

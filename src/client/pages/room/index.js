@@ -1,33 +1,40 @@
 import React from 'react'
 import Router from 'next/router'
+import {hasRoom, getRoomSize} from "../../components/functions/fetch"
 
 class RoomPage extends React.Component {
     static getInitialProps ({ query }) {
-        return { id: query.id,numberOfPeople: query.numberOfPeople}
+        return { id: query.id}
     }
   
   constructor(props) {
     super(props)
     this.state = {
+      roomSize : -1
     };
   }
 
-  next(){
-    console.log("numberOfPeople")
-      Router.push(`/confirm?id=${this.props.id}&numberOfPeople=${this.props.numberOfPeople}`)
-    
+  async fetchRoomSize(id){
+    await getRoomSize(id).then(res => { 
+      console.log(res)
+      this.setState({roomSize:res.data});return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
+  };
+
+  componentDidMount(){
+    if(hasRoom(this.props.id)){
+      this.fetchRoomSize(this.props.id)
+    }
+    else Router.push('/menu');
   }
   
 
   render() {
-    console.log("1234567890",this.props.numberOfPeople)
     return (
       <div>
     <div>{this.props.id}
-    <br></br>
-    {this.props.numberOfPeople}
+    
     </div>
-    <button onClick={()=>this.next()}>confirm</button>
+    <div>{this.state.roomSize}</div>
     </div>
     
     )

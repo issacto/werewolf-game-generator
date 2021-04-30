@@ -14,7 +14,7 @@ class Menu extends React.Component {
 
   next(){
     console.log("numberOfPeople")
-      Router.push(`/confirm?id=${this.props.id}&numberOfPeople=${this.props.numberOfPeople}`)
+      Router.push(`/room?id=${this.props.id}`)
     
   }
   

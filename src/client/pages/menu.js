@@ -13,7 +13,7 @@ class Menu extends React.Component {
     };
   }
   async fetchData(){
-    await getRoom().then(res => { 
+    await getRoom(this.state.numberOfPeople).then(res => { 
       console.log(res.data)
       this.setState({displayRoom:res.data});return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
   };
