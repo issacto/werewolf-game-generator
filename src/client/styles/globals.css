@@ -14,3 +14,62 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.cardBox{
+  display:flex;
+  margin: 1vh;
+  min-height: 40vh;
+  overflow-x: auto;
+  
+}
+
+.cardStyle {
+  background-color: rgba(3, 83, 88, 0.7);
+  color: white;
+  margin-right: 1vh;
+  min-width: 30vh;
+}
+
+.menu{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.sizeTable{
+  display:flex;
+  background-color: brown;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.topBar{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 5vh;
+}
+
+
+.middleBar{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 3vh;
+  background-color: aliceblue;
+}
+
+.middelP{
+  margin-right: 2vh;
+}
+
+.MenuLogo{
+  width: 15vh;
+  height:15vh;
+}
+
+.MenuLogoTitle{
+  font-size: 4vh;
+}

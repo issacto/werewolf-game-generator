@@ -2,7 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import {getRoom} from "../components/functions/fetch"
 import {charatersList} from "../components/data"
-
+import {charatersImageMap,charatersColorMap} from "../components/data"
 
 class Menu extends React.Component {
   
@@ -50,27 +50,29 @@ class Menu extends React.Component {
 
   render() {
     return (
-    <div>
-    <p>Required Size: {this.state.numberOfPeople}</p>
-    <p>People chosen: {this.state.counter}</p>
+    <div className="menu">
+      <div className="topBar">
+        <p style={{marginRight:"2vh"}}>Required Size: {this.state.numberOfPeople} </p>
+        <p>People chosen: {this.state.counter}</p>
+      </div>
 
-      <table>
-      <tbody>
-      <tr>
-        {this.state.sizeAvailable.map((n) =>
-        <th>
-          <p onClick={()=>this.update(n)}>{n}</p>
-        </th> )}
-      </tr>
-      </tbody>
-      </table>
+    <div className="middleBar">
+      <p className="middelP">Choose your size: </p>
+      {this.state.sizeAvailable.map((n) =>
+        <p className="middelP" onClick={()=>this.update(n)}>{n}</p>
+       )}
+    </div>
       
       
+      <div className="cardBox">
+        {charatersList.map((n) =>
+          <div className="cardStyle">
+            <p className="MenuLogoTitle" style={{color:charatersColorMap.get(n)}}>{n}</p>
+              {charatersImageMap.get(n)}
+          </div>
+        )}
+      </div>
       <p>Base Case:  2 Citizens + 1 Prophet +1 Wolf</p>
-      {charatersList.map((n) =>
-        <th>
-          <p >{n}</p>
-        </th> )}
       <button onClick={()=>this.confirm()}>confirm</button>
       <button onClick={()=>this.back()}>back</button>
     </div>

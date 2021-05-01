@@ -24,7 +24,7 @@ const contentStyle = {
 const Layout = props => (
   <div className="Layout" style={layoutStyle}>
     <div style={headerStyle}>
-      <p>NOthing serious</p>
+      <p>Werewold Game Generator</p>
       <a href="/">Back</a>
     </div>
     <div className="Content" style={contentStyle}>
@@ -43,3 +43,5 @@ const Layout = props => (
 );
   
 export default Layout;
+
+
