@@ -20,6 +20,7 @@ package com.example.demo;
     private static int counter = 0;
     private static  ArrayList<String> idList = new ArrayList<String>();
     private static HashMap<String, String> roomSizeMap = new HashMap<String, String>();
+    private static HashMap<String, ArrayList<String>> idCharactersMap = new HashMap<String, ArrayList<String>>();
 
     public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
@@ -47,6 +48,8 @@ package com.example.demo;
         String encodedString = Base64.getEncoder().encodeToString(finalInput.getBytes());
         idList.add(encodedString);
         roomSizeMap.put(encodedString ,size);
+        ArrayList<String> initilizeStringArray = new ArrayList<String>();
+        idCharactersMap.put(encodedString,initilizeStringArray);
         return  encodedString;
     }
 
@@ -66,6 +69,15 @@ package com.example.demo;
         System.out.println(roomSizeMap.get(id));
         return roomSizeMap.get(id);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/putCharacter")
+    public void putRoom(@RequestParam(value = "id") String id, @RequestParam(value = "character") String character) {
+        ArrayList<String> initialStringArray = idCharactersMap.get(id);
+        initialStringArray.add(character);
+        idCharactersMap.put(id,initialStringArray);
+    }
+
 
 }
 
