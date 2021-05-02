@@ -13,7 +13,6 @@ class Menu extends React.Component {
       roomId : 1,
       numberOfPeople:5,
       counter :4,
-      characterList:["Citizen","Citizen","Prophet","Wolf"],
       Citizen: 2,
       Prophet: 1,
       Wolf: 1,
@@ -124,8 +123,9 @@ class Menu extends React.Component {
         )}
       </div>
       <p>Base Case:  2 Citizens + 1 Prophet +1 Wolf</p>
-      <button onClick={()=>this.confirm()}>confirm</button>
+      
       <button onClick={()=>this.back()}>back</button>
+      <button onClick={()=>this.confirm()}>confirm</button>
     </div>
     )
   }

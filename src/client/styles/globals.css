@@ -82,3 +82,13 @@ a {
 .MenuLogoTitle{
   font-size: 4vh;
 }
+
+.confirmMain{
+  display:flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: red;
+  height:auto;
+  flex-direction: column;
+}

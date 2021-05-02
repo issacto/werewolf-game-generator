@@ -25,6 +25,7 @@ const contentStyle = {
   minHeight: "80vh",
   display: "flex",
   flexDirection: "column",
+  justifyContent:"center",
   backgroundColor: "rgba(7, 62, 114, 0.733)",
 };
 

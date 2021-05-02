@@ -24,6 +24,14 @@ export const  getRoomSize = async (id) => {
     return dataPromise;
 }
 
+export const  getPublicRoom = async (id) => {
+    //const promise =axios.get("/api/reviews/comments/"+userData );
+    const dataPromise =  await axios.get("http://localhost:8080/getPublicRoom?id="+id).then((response) => {console.log("response");console.log(response.data);return response}).catch(err => {console.log("Error:");return null})
+    
+    return dataPromise;
+}
+
+
 export const  putCharacter = async (id,character) => {
     //const promise =axios.get("/api/reviews/comments/"+userData );
     const dataPromise =  await axios.get("http://localhost:8080/putCharacter?id="+id+"&character="+character).then((response) => {console.log("response");console.log(response.data);return response}).catch(err => {console.log("Error:");return null})

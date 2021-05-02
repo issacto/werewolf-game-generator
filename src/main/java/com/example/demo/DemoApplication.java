@@ -20,6 +20,7 @@ package com.example.demo;
     private static int counter = 0;
     private static  ArrayList<String> idList = new ArrayList<String>();
     private static HashMap<String, String> roomSizeMap = new HashMap<String, String>();
+    private static HashMap<String, String> roomPublicMap = new HashMap<String, String>();
     private static HashMap<String, ArrayList<String>> idCharactersMap = new HashMap<String, ArrayList<String>>();
 
     public static void main(String[] args) {
@@ -46,8 +47,11 @@ package com.example.demo;
         System.out.println("Time now"+"   "+finalInput);
         //encode
         String encodedString = Base64.getEncoder().encodeToString(finalInput.getBytes());
+        String publicURLString = finalInput+"12345467";
+        String encodedPublicString = Base64.getEncoder().encodeToString(publicURLString.getBytes());
         idList.add(encodedString);
         roomSizeMap.put(encodedString ,size);
+        roomPublicMap.put(encodedString ,encodedPublicString);
         ArrayList<String> initilizeStringArray = new ArrayList<String>();
         idCharactersMap.put(encodedString,initilizeStringArray);
         return  encodedString;
@@ -76,6 +80,13 @@ package com.example.demo;
         ArrayList<String> initialStringArray = idCharactersMap.get(id);
         initialStringArray.add(character);
         idCharactersMap.put(id,initialStringArray);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getPublicRoom")
+    public String getPublicRoom(@RequestParam(value = "id", defaultValue = "World") String id) {
+        System.out.println(roomPublicMap.get(id));
+        return roomPublicMap.get(id);
     }
 
 
