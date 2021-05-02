@@ -25,16 +25,25 @@ a {
 }
 
 .cardStyle {
-  background-color: rgba(3, 83, 88, 0.7);
+  background-color: rgba(15, 39, 41, 0.7);
   color: white;
   margin-right: 1vh;
   min-width: 30vh;
+  display:flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .menu{
   justify-content: center;
   text-align: center;
   align-items: center;
+}
+
+.landingMain{
+  background-color: blanchedalmond;
 }
 
 .sizeTable{

@@ -11,7 +11,7 @@ function navigate(){
 export default function Home() {
   return (
   
-    <div >
+    <div  >
       <Head>
         <title>Werewolf</title>
         <link xrel="icon" href="/favicon.ico" />
@@ -24,7 +24,10 @@ export default function Home() {
         
         <WolfLogo width="20%" style={{marginTop:"1%"}}/>
         <br></br>
-        <button onClick={()=>navigate()}>Start</button>
+        <div>
+        <button onClick={()=>navigate()}>Enter a room</button>
+        <button onClick={()=>navigate()}>Open a room</button>
+        </div>
         
       </main>
 

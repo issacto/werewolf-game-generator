@@ -6,10 +6,10 @@ import MerchantLogo from "../images/merchant.svg"
 import HiddenWolfLogo from "../images/hiddenWolf.svg"
 import WolfLogo from "../images/wolf.svg"
 import CitizenLogo from "../images/citizen.svg"
-
+import ProphetLogo from "../images/prophet.svg"
 
 export const charatersList= [
-    "Wizard","Cupido","Hunter","Merchant","Hidden Wolf","Wolf","Citizen"
+    "Wolf","Citizen","Prophet","Wizard","Cupido","Hunter","Merchant","HiddenWolf"
 ]
 
 export const charatersImageMap= new Map([
@@ -18,9 +18,10 @@ export const charatersImageMap= new Map([
     ["Cupido",<CupidoLogo className="MenuLogo"/>],
     ["Hunter",<HunterLogo className="MenuLogo"/>],
     ["Merchant",<MerchantLogo className="MenuLogo"/>],
-    ["Hidden Wolf",<HiddenWolfLogo className="MenuLogo"/>],
+    ["HiddenWolf",<HiddenWolfLogo className="MenuLogo"/>],
     ["Wolf",<WolfLogo className="MenuLogo"/>],
-    ["Citizen",<CitizenLogo className="MenuLogo"/>]
+    ["Citizen",<CitizenLogo className="MenuLogo"/>],
+    ["Prophet",<ProphetLogo className="MenuLogo"/>]
 ])
 
 export const charatersColorMap= new Map([
@@ -29,8 +30,9 @@ export const charatersColorMap= new Map([
     ["Cupido","red"],
     ["Hunter","green"],
     ["Merchant","blue"],
-    ["Hidden Wolf","white"],
+    ["HiddenWolf","white"],
     ["Wolf","black"],
-    ["Citizen","rgb(211, 103, 40)"]
+    ["Citizen","rgb(211, 103, 40)"],
+    ["Prophet","grey"]
 ])
 

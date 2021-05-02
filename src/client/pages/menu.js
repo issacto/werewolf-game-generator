@@ -13,8 +13,15 @@ class Menu extends React.Component {
       roomId : 1,
       numberOfPeople:5,
       counter :4,
-      characterList:["Citizen","Citizen","Prophet","Wolf"]
-
+      characterList:["Citizen","Citizen","Prophet","Wolf"],
+      Citizen: 2,
+      Prophet: 1,
+      Wolf: 1,
+      Cupido:0,
+      Wizard:0,
+      Hunter:0,
+      HiddenWolf:0,
+      Merchant:0,
     };
   }
   async fetchData(){
@@ -48,6 +55,38 @@ class Menu extends React.Component {
     this.setState({numberOfPeople:stringNumber})
   }
 
+  getCharacterSelected(character){
+    switch(character) {
+      case "Citizen":
+        return this.state.citizenNo
+      case "Hunter":
+        return this.state.hunterNo
+      case "Wizard":
+        return this.state.wizardNo
+      default: 
+        text = "Looking forward to the Weekend";
+        break;
+    }
+  }
+
+  changeSize(character,changeSize){
+    switch(character) {
+      case "Citizen":
+        if(changeSize>=2)  this.setState({[character]:changeSize});
+        break;
+      case "Prophet":
+        if(changeSize>=1)  this.setState({[character]:changeSize});
+        break;
+      case "Wolf":
+        if(changeSize>=1)  this.setState({[character]:changeSize});
+        break;
+      default: 
+        if(changeSize>=0) this.setState({[character]:changeSize});
+        break;
+    }
+    
+  }
+
   render() {
     return (
     <div className="menu">
@@ -67,8 +106,15 @@ class Menu extends React.Component {
       <div className="cardBox">
         {charatersList.map((n) =>
           <div className="cardStyle">
-            <p className="MenuLogoTitle" style={{color:charatersColorMap.get(n)}}>{n}</p>
+           
               {charatersImageMap.get(n)}
+              <p className="MenuLogoTitle" style={{color:charatersColorMap.get(n)}}>{n}</p>
+              <div style={{marginTop:"0.1vh",display:"flex",flexDirection:"row"}}>
+                
+              <button onClick={()=>this.changeSize(n,this.state[n]-1)}>-</button>
+              <p style={{color:"white",margin:"2vh"}}> {this.state[n]}</p>
+              <button onClick={()=>this.changeSize(n,this.state[n]+1)}>+</button>
+              </div>
           </div>
         )}
       </div>

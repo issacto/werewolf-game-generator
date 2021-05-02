@@ -9,16 +9,19 @@ const layoutStyle = {
 };
 const headerStyle={
   minHeight: "10vh",
+  backgroundColor:"grey",
 }
 const footerStyle={
   minHeight: "10vh",
+  backgroundColor:"grey",
 }
 
 const contentStyle = {
   flex: 1,
   minHeight: "80vh",
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  backgroundColor: "rgba(7, 62, 114, 0.733)",
 };
 
 const Layout = props => (
@@ -30,7 +33,7 @@ const Layout = props => (
     <div className="Content" style={contentStyle}>
       {props.children}
     </div>
-    <footer className={styles.footer}>
+    <footer className={styles.footer} style={footerStyle}>
       <a
         href="https://issacto.com"
         target="_blank"
