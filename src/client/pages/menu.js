@@ -38,8 +38,8 @@ class Menu extends React.Component {
   async confirm(){
     console.log("numberOfPeople");
     console.log(this.state.numberOfPeople);
-    if(this.state.numberOfPeople>=this.state.counter) return `Cant choose characters less than ${this.state.numberOfPeople}`;
-    else if(his.state.numberOfPeople<=this.state.counter) return `Cant choose characters more than ${this.state.numberOfPeople}`;
+    if(this.state.numberOfPeople>this.state.counter) return `Cant choose characters less than ${this.state.numberOfPeople}`;
+    else if(this.state.numberOfPeople<this.state.counter) return `Cant choose characters more than ${this.state.numberOfPeople}`;
     else {
       var x = await this.fetchData()
       console.log("x")
@@ -69,19 +69,24 @@ class Menu extends React.Component {
     }
   }
 
-  changeSize(character,changeSize){
+  changeCounter(isPlus){
+    if(isPlus) this.setState({counter:this.state.counter+1})
+    else this.setState({counter:this.state.counter-1})
+  }
+
+  changeSize(character,changeSize, isPlus){
     switch(character) {
       case "Citizen":
-        if(changeSize>=2)  this.setState({[character]:changeSize});
+        if(changeSize>=2)  {this.setState({[character]:changeSize});this.changeCounter(isPlus)};
         break;
       case "Prophet":
-        if(changeSize>=1)  this.setState({[character]:changeSize});
+        if(changeSize>=1)  {this.setState({[character]:changeSize});this.changeCounter(isPlus)};
         break;
       case "Wolf":
-        if(changeSize>=1)  this.setState({[character]:changeSize});
+        if(changeSize>=1)  {this.setState({[character]:changeSize});this.changeCounter(isPlus)};
         break;
       default: 
-        if(changeSize>=0) this.setState({[character]:changeSize});
+        if(changeSize>=0) {this.setState({[character]:changeSize});this.changeCounter(isPlus)};
         break;
     }
     
@@ -111,9 +116,9 @@ class Menu extends React.Component {
               <p className="MenuLogoTitle" style={{color:charatersColorMap.get(n)}}>{n}</p>
               <div style={{marginTop:"0.1vh",display:"flex",flexDirection:"row"}}>
                 
-              <button onClick={()=>this.changeSize(n,this.state[n]-1)}>-</button>
+              <button onClick={()=>this.changeSize(n,this.state[n]-1,false)}>-</button>
               <p style={{color:"white",margin:"2vh"}}> {this.state[n]}</p>
-              <button onClick={()=>this.changeSize(n,this.state[n]+1)}>+</button>
+              <button onClick={()=>this.changeSize(n,this.state[n]+1,true)}>+</button>
               </div>
           </div>
         )}

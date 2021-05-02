@@ -10,6 +10,10 @@ const layoutStyle = {
 const headerStyle={
   minHeight: "10vh",
   backgroundColor:"grey",
+  display:"flex",
+  justifyContent:"center",
+  padding:"3vh",
+  fontSize:"3vh"
 }
 const footerStyle={
   minHeight: "10vh",
@@ -27,8 +31,9 @@ const contentStyle = {
 const Layout = props => (
   <div className="Layout" style={layoutStyle}>
     <div style={headerStyle}>
-      <p>Werewold Game Generator</p>
-      <a href="/">Back</a>
+      <div>
+      <a href="/">Werewold Game Generator</a>
+      </div>
     </div>
     <div className="Content" style={contentStyle}>
       {props.children}
