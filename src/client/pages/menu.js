@@ -1,8 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
-import {getRoom} from "../components/functions/fetch"
-import {charatersList} from "../components/data"
-import {charatersImageMap,charatersColorMap} from "../components/data"
+import {getRoom,putCharacters} from "../components/functions/fetch"
+import {charatersImageMap,charatersColorMap,charatersList} from "../components/data"
 
 class Menu extends React.Component {
   
@@ -21,12 +20,29 @@ class Menu extends React.Component {
       Hunter:0,
       HiddenWolf:0,
       Merchant:0,
+      fetchCharacterNameArray:[],
+      fetchCharacterSizeArray:[]
     };
   }
   async fetchData(){
     await getRoom(this.state.numberOfPeople).then(res => { 
       console.log(res.data)
       this.setState({roomId:res.data});return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
+  };
+
+  async putData(){
+    for(var character of charatersList){
+      if(this.state[character]>=0){ 
+        this.state.fetchCharacterNameArray.push(character)
+        this.state.fetchCharacterSizeArray.push(this.state[character])
+      }
+    }
+    console.log('roomId')
+    console.log(this.state.roomId)
+    await putCharacters(this.state.roomId,this.state.fetchCharacterNameArray,this.state.fetchCharacterSizeArray).then(res => { 
+      console.log(res.data)
+      this.setState({roomId:res.data});return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
+    
   };
 
   back(x){
@@ -41,6 +57,7 @@ class Menu extends React.Component {
     else if(this.state.numberOfPeople<this.state.counter) return `Cant choose characters more than ${this.state.numberOfPeople}`;
     else {
       var x = await this.fetchData()
+      this.putData();
       console.log("x")
       console.log(this.state.roomId)
       Router.push(`/confirm?id=${this.state.roomId}&numberOfPeople=${this.state.numberOfPeople}`)
