@@ -94,3 +94,10 @@ a {
   font-size: 3vh;
 }
 
+.room{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  
+}
+

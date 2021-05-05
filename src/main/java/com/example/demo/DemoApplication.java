@@ -21,7 +21,7 @@ package com.example.demo;
     private static  ArrayList<String> idList = new ArrayList<String>();
     private static HashMap<String, String> roomSizeMap = new HashMap<String, String>();
     private static HashMap<String, String> roomPublicMap = new HashMap<String, String>();
-    private static HashMap<String, ArrayList<String>> idCharactersMap = new HashMap<String, ArrayList<String>>();
+    private static HashMap<String, HashMap<String,Integer>> idCharactersMap = new HashMap<String,  HashMap<String,Integer>>();
 
     public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
@@ -53,7 +53,6 @@ package com.example.demo;
         roomSizeMap.put(encodedString ,size);
         roomPublicMap.put(encodedString ,encodedPublicString);
         ArrayList<String> initilizeStringArray = new ArrayList<String>();
-        idCharactersMap.put(encodedString,initilizeStringArray);
         return  encodedString;
     }
 
@@ -77,7 +76,23 @@ package com.example.demo;
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/putCharacter")
     public String putCharacter(@RequestParam(value = "id") String id, @RequestParam(value = "charactersName") String character , @RequestParam(value = "charactersSize") String charactersSize) {
-        System.out.println("character");
+        System.out.println("IDIDIDID"+"   "+ id);
+        HashMap<String,Integer> initialStringArray = idCharactersMap.get(id);
+        if(initialStringArray!=null){
+            System.out.println("herereererererer");
+            initialStringArray.put(character,Integer.parseInt(charactersSize));
+        }else{
+            HashMap<String,Integer> newStringArray = new HashMap<String,Integer>();
+            System.out.println("charactersSize");
+            System.out.println(charactersSize);
+            newStringArray.put(character,Integer.parseInt(charactersSize));
+            idCharactersMap.put(id,newStringArray);
+            
+        }
+        System.out.println("idCharactersMap");
+        System.out.println(idCharactersMap);
+        System.out.println("initialStringArray");
+        System.out.println(initialStringArray);
         System.out.println(character);
         return character;
         /*ArrayList<String> initialStringArray = idCharactersMap.get(id);
@@ -90,6 +105,13 @@ package com.example.demo;
     public String getPublicRoom(@RequestParam(value = "id", defaultValue = "World") String id) {
         System.out.println(roomPublicMap.get(id));
         return roomPublicMap.get(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getCharacters")
+    public HashMap<String,Integer> getCharacters(@RequestParam(value = "id", defaultValue = "World") String id) {
+        System.out.println(roomPublicMap.get(id));
+        return idCharactersMap.get(id);
     }
 
 

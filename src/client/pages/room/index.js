@@ -1,6 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
-import {hasRoom, getRoomSize} from "../../components/functions/fetch"
+import {hasRoom, getRoomSize,getCharacters} from "../../components/functions/fetch"
 
 class RoomPage extends React.Component {
     static getInitialProps ({ query }) {
@@ -20,9 +20,16 @@ class RoomPage extends React.Component {
       this.setState({roomSize:res.data});return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
   };
 
+  async fetchCharacters(id){
+    await getCharacters(id).then(res => { 
+      console.log(res);return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
+  };
+
+
   componentDidMount(){
     if(hasRoom(this.props.id)){
       this.fetchRoomSize(this.props.id)
+      this.fetchCharacters(this.props.id)
     }
     else Router.push('/menu');
   }

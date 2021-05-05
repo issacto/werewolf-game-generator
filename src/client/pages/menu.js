@@ -32,12 +32,11 @@ class Menu extends React.Component {
 
   async putData(){
     for(var character of charatersList){
-      if(this.state[character]>=0){ 
+      if(this.state[character]>0){ 
         //this.state.fetchCharacterNameArray.push(character)
        //this.state.fetchCharacterSizeArray.push(this.state[character])
         await putCharacter(this.state.roomId,character,this.state[character]).then(res => { 
-          console.log(res.data)
-          this.setState({roomId:res.data});return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
+          console.log(res.data);return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
         
       }
     }
