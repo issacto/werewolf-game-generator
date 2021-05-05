@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 import {hasRoom, getRoomSize,getPublicRoom} from "../../components/functions/fetch"
-
+import LinkLogo from "../../components/images/link.svg"
 class Menu extends React.Component {
     static getInitialProps ({ query }) {
         return { id: query.id,numberOfPeople: query.numberOfPeople}
@@ -48,12 +48,18 @@ class Menu extends React.Component {
     return (
     <div className="confirmMain">
       <h1>Links</h1>
-      
-      
-      <div>{this.state.roomSize}</div>
-      <div>Admin Link: {this.props.id}</div>
-      <div>User Link: {this.state.publicRoomId}</div>
-
+      <table style={{justifyContent:"center",width:"auto", borderSpacing:"1.5vh"}}>
+        <tr>
+          <th> </th>
+          <th>RoomId</th>
+          <th>Copy RoomId</th>
+          <th>Copy Link to Room</th>
+        </tr>
+        <tbody>
+        <tr><td>Admin: </td><td> {this.props.id}</td><td><LinkLogo width="10%"/></td><td><LinkLogo width="10%"/></td></tr>
+        <tr><td>User: </td><td> {this.state.publicRoomId}</td><td><LinkLogo width="10%"/></td><td><LinkLogo width="10%"/></td></tr>
+        </tbody>
+      </table>
       <button onClick={()=>this.next()}>confirm</button>
     </div>
     

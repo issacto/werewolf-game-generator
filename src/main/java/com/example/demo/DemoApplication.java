@@ -75,9 +75,11 @@ package com.example.demo;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/putCharacters")
-    public void putRoom(@RequestParam(value = "id") String id, @RequestParam(value = "charactersName") String[] character , @RequestParam(value = "charactersSize") String[] charactersSize) {
-        System.out.println(id);
+    @GetMapping("/putCharacter")
+    public String putCharacter(@RequestParam(value = "id") String id, @RequestParam(value = "charactersName") String character , @RequestParam(value = "charactersSize") String charactersSize) {
+        System.out.println("character");
+        System.out.println(character);
+        return character;
         /*ArrayList<String> initialStringArray = idCharactersMap.get(id);
         initialStringArray.add(character);
         idCharactersMap.put(id,initialStringArray);*/

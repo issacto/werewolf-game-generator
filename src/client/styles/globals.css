@@ -85,10 +85,12 @@ a {
 
 .confirmMain{
   display:flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
   background-color: red;
   height:auto;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 3vh;
 }
+

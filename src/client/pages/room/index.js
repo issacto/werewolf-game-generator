@@ -30,11 +30,11 @@ class RoomPage extends React.Component {
 
   render() {
     return (
-      <div>
-    <div>{this.props.id}
-    
-    </div>
-    <div>{this.state.roomSize}</div>
+    <div className="room">
+      <div>{this.props.id}
+      
+      </div>
+      <div>{this.state.roomSize}</div>
     </div>
     
     )

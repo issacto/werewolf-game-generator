@@ -32,9 +32,9 @@ export const  getPublicRoom = async (id) => {
 }
 
 
-export const  putCharacters = async (id,charactersName, charactersSize) => {
+export const  putCharacter = async (id,charactersName, charactersSize) => {
     //const promise =axios.get("/api/reviews/comments/"+userData );
-    const dataPromise =  await axios.get("http://localhost:8080/putCharacters?id="+id, { params: { charactersName: charactersName,charactersSize:charactersSize  }}).then((response) => {console.log("response");console.log(response.data);return response}).catch(err => {console.log("Error:");return null})
+    const dataPromise =  await axios.get("http://localhost:8080/putCharacter?id="+id, { params: { charactersName: charactersName,charactersSize:charactersSize  }}).then((response) => {console.log("response");console.log(response.data);return response}).catch(err => {console.log("Error:");return null})
     
     return dataPromise;
 }
