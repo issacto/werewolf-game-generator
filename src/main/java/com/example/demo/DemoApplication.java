@@ -5,6 +5,7 @@ package com.example.demo;
  import org.springframework.web.bind.annotation.GetMapping;
  import org.springframework.web.bind.annotation.RequestParam;
  import org.springframework.web.bind.annotation.RestController;
+ import org.springframework.http.ResponseEntity;
  import java.util.Base64;
  import java.time.LocalDateTime;  
  import java.text.SimpleDateFormat;  
@@ -22,6 +23,7 @@ package com.example.demo;
     private static HashMap<String, String> roomSizeMap = new HashMap<String, String>();
     private static HashMap<String, String> roomPublicMap = new HashMap<String, String>();
     private static HashMap<String, HashMap<String,Integer>> idCharactersMap = new HashMap<String,  HashMap<String,Integer>>();
+    private static HashMap<String, HashMap<String,ArrayList<String>>> idCharactersPlayerMap = new HashMap<String, HashMap<String,ArrayList<String>>>();
 
     public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
@@ -109,9 +111,9 @@ package com.example.demo;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getCharacters")
-    public HashMap<String,Integer> getCharacters(@RequestParam(value = "id", defaultValue = "World") String id) {
+    public ResponseEntity<?> getCharacters(@RequestParam(value = "id", defaultValue = "World") String id) {
         System.out.println(roomPublicMap.get(id));
-        return idCharactersMap.get(id);
+        return ResponseEntity.ok(idCharactersMap.get(id));
     }
 
 

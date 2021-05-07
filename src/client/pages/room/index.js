@@ -10,7 +10,8 @@ class RoomPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      roomSize : -1
+      roomSize : -1,
+      charactersJson:[]
     };
   }
 
@@ -22,7 +23,16 @@ class RoomPage extends React.Component {
 
   async fetchCharacters(id){
     await getCharacters(id).then(res => { 
-      console.log(res);return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
+      console.log(res.data)
+      var charactersJson =[] 
+      for (var prop in res.data) {
+        //console.log("Key:" + prop);
+        //console.log("Value:" + res.data[prop]);
+        charactersJson.push([prop,res.data[prop]]);
+      }
+      this.setState({charactersJson:charactersJson})
+      //this.setState({charactersJson:res.data});
+      return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
   };
 
 
@@ -38,10 +48,14 @@ class RoomPage extends React.Component {
   render() {
     return (
     <div className="room">
-      <div>{this.props.id}
-      
+      Ready to start
+      <div>Room number: {this.props.id}
       </div>
       <div>{this.state.roomSize}</div>
+      {
+        this.state.charactersJson?
+        this.state.charactersJson.map((data) =><li>{data[0]}{data[1]}</li>):null
+      }
     </div>
     
     )
