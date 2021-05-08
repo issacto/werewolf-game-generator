@@ -11,10 +11,9 @@ class Menu extends React.Component {
     super(props)
     this.state = {
       roomSize : -1,
-      publicRoomId:-1
+      publicRoomId:-1,
     };
   }
-
   
   async fetchRoomSize(id){
     await getRoomSize(id).then(res => { 
@@ -41,6 +40,10 @@ class Menu extends React.Component {
     console.log("numberOfPeople")
     Router.push(`/room?id=${this.props.id}`)
   }
+
+  copyCodeToClipboard = () => {
+    var promise = navigator.clipboard.writeText(this.state.publicRoomId)
+  }
   
 
   render() {
@@ -56,11 +59,24 @@ class Menu extends React.Component {
           <th>Copy Link to Room</th>
         </tr>
         <tbody>
-        <tr><td>Admin: </td><td> {this.props.id}</td><td><LinkLogo width="10%"/></td><td><LinkLogo width="10%"/></td></tr>
-        <tr><td>User: </td><td> {this.state.publicRoomId}</td><td><LinkLogo width="10%"/></td><td><LinkLogo width="10%"/></td></tr>
+        <tr>
+          <td>Admin: </td><td> {this.props.id}</td>
+          <td><LinkLogo width="10%"/></td>
+          <td><LinkLogo width="10%"/></td>
+        </tr>
+        <tr>
+          <td>User: </td>
+          <td> {this.state.publicRoomId}</td>
+          <td><LinkLogo width="10%"/></td>
+          <td><LinkLogo width="10%"/></td>
+        </tr>
         </tbody>
       </table>
       <button onClick={()=>this.next()}>confirm</button>
+      <button 
+        onClick={() =>  this.copyCodeToClipboard()}>
+      Copy
+      </button>
     </div>
     
     )

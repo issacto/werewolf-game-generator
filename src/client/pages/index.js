@@ -4,9 +4,8 @@ import styles from '../styles/Home.module.css'
 import Router from 'next/router'
 import WolfLogo from "../components/images/wolf.svg"
 
-function navigate(){
-  Router.push('/menu')
-
+function navigate(name){
+  Router.push('/'+name)
 }
 export default function Home() {
   return (
@@ -25,8 +24,8 @@ export default function Home() {
         <WolfLogo width="20%" style={{marginTop:"1%"}}/>
         <br></br>
         <div>
-        <button onClick={()=>navigate()}>Enter a room</button>
-        <button onClick={()=>navigate()}>Open a room</button>
+        <button onClick={()=>navigate('room/player/info')}>Enter a room</button>
+        <button onClick={()=>navigate('menu')}>Open a room</button>
         </div>
         
       </main>
