@@ -1,9 +1,9 @@
 import React from 'react'
 import Router from 'next/router'
 import {hasRoom, getRoomSize,getCharacters,getCharacterPlayers} from "../../components/functions/fetch"
-import {charatersImageMap} from "../../components/data";
+import {charatersImageMap,charatersColorMap} from "../../components/data";
 import LinkLogo from "../../components/images/link.svg";
-
+import RefreshLogo from "../../components/images/refresh.svg";
 
 class RoomPage extends React.Component {
     static getInitialProps ({ query }) {
@@ -52,6 +52,10 @@ class RoomPage extends React.Component {
     var promise = navigator.clipboard.writeText(this.props.id)
   }
 
+  refresh=()=>{
+    Router.reload(window.location.pathname);
+  }
+
   componentDidMount(){
     //if room id is not accurate then return to menu
     hasRoom(this.props.id).then(data=>
@@ -78,7 +82,14 @@ class RoomPage extends React.Component {
         style={{marginLeft:"3vh"}} 
         onClick={() =>  this.copyCodeToClipboard()}/>
       </div>
-      <div>Total number of players: {this.state.roomSize}</div>
+      <div style={{marginTop:"2vh"}}>Total number of players: {this.state.roomSize}</div>
+      <div style={{marginTop:"2vh"}}>
+        <RefreshLogo
+        width="3.7vh" 
+        height="3.7vh"
+        onClick={()=>this.refresh()}
+        />
+      </div>
       <table className= "displayTable">
       <tr className="tableHeader">
         <td>Role</td>
@@ -90,7 +101,7 @@ class RoomPage extends React.Component {
         this.state.charactersDetails?
         
         this.state.charactersDetails.map((data) =>
-        <tr>
+        <tr style={{color:charatersColorMap.get(data[0])}}>
           <td>
             <div className="displayTableImageSection">
             {charatersImageMap.get(data[0])}

@@ -25,7 +25,7 @@ class RoomPage extends React.Component {
   }
 
   async handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name +this.state.roomId);
+    alert('A name was submitted: ' + this.state.name +". The room id is "+this.state.roomId);
     event.preventDefault();
     var characterData = await joinACharacter(this.state.roomId,this.state.name);
     Router.push(`/room/player?id=${this.state.roomId}&name=${this.state.name}&character=${characterData.data}`);

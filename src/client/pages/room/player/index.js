@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 import {hasRoom, getRoomSize,getCharacters} from "../../../components/functions/fetch"
-import {charatersImageMap} from "../../../components/data"
+import {charatersImageMap,charatersColorMap} from "../../../components/data"
 
 class RoomPage extends React.Component {
     static getInitialProps ({ query }) {
@@ -42,9 +42,10 @@ class RoomPage extends React.Component {
   render() {
     return (
     <div className="room">
-      <h1>{this.props.character} </h1>
+      <h1 style={{color:charatersColorMap.get(this.props.character)}}>{this.props.character} </h1>
       <div>{charatersImageMap.get(this.props.character)}</div>
-      <div>Your character: {this.props.name} </div>
+      <br/>
+      <div>Name: {this.props.name} </div>
       <div>Room number: {this.props.id}</div>
       
     </div>
