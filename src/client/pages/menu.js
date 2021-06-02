@@ -57,14 +57,14 @@ class Menu extends React.Component {
   async confirm(){
     console.log("numberOfPeople");
     console.log(this.state.numberOfPeople);
-    if(this.state.numberOfPeople>this.state.counter) return `Cant choose characters less than ${this.state.numberOfPeople}`;
-    else if(this.state.numberOfPeople<this.state.counter) return `Cant choose characters more than ${this.state.numberOfPeople}`;
+    if(this.state.numberOfPeople>this.state.counter) alert(`Cannot choose number of characters less than the required number - ${this.state.numberOfPeople}`);
+    else if(this.state.numberOfPeople<this.state.counter) alert( `Cannot choose number of characters more than the required number -  ${this.state.numberOfPeople}`);
     else {
       var x = await this.fetchData()
       var y =  this.putData();
       console.log("x")
       console.log(this.state.roomId)
-      Router.push(`/confirm?id=${this.state.roomId}&numberOfPeople=${this.state.numberOfPeople}`)
+      Router.push(`/room?id=${this.state.roomId}`)
       //console.log(x)
     }
   }

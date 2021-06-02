@@ -4,7 +4,7 @@ import {hasRoom, getRoomSize,getCharacters} from "../../../components/functions/
 
 class RoomPage extends React.Component {
     static getInitialProps ({ query }) {
-        return { id: query.id}
+        return { id: query.id, name: query.name,character: query.character}
     }
   
   constructor(props) {
@@ -36,27 +36,14 @@ class RoomPage extends React.Component {
   };
 
 
-  componentDidMount(){
-      /*
-    if(hasRoom(this.props.id)){
-      this.fetchRoomSize(this.props.id)
-      this.fetchCharacters(this.props.id)
-    }
-    else Router.push('/menu');*/
-  }
   
 
   render() {
     return (
     <div className="room">
-      Ready to start
-      <div>Room number: {this.props.id}
-      </div>
-      <div>{this.state.roomSize}</div>
-      {
-        this.state.charactersJson?
-        this.state.charactersJson.map((data) =><li>{data[0]}{data[1]}</li>):null
-      }
+      <div>Room number: {this.props.id}</div>
+      <div>Your name:{this.props.name} </div>
+      <div>Your character: {this.props.character} </div>
     </div>
     
     )

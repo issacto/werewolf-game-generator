@@ -98,6 +98,32 @@ a {
   justify-content: center;
   text-align: center;
   align-items: center;
+  display:flex;
+  flex-direction: column;
+  overflow-y: auto;
+  font-size: 3vh;
+  padding:4vh;
   
 }
+.displayTable{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border:3px solid white;
+  min-width: 50%;
+  min-height: 50%;
+  margin-top: 3%;
+}
+.displayTableImageSection{
+  margin-top: 3%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+}
+.tableHeader{
+  font-size: 4vh;
+}
+
 

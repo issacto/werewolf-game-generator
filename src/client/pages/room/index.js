@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 import {hasRoom, getRoomSize,getCharacters} from "../../components/functions/fetch"
-
+import {charatersImageMap} from "../../components/data"
 class RoomPage extends React.Component {
     static getInitialProps ({ query }) {
         return { id: query.id}
@@ -37,25 +37,52 @@ class RoomPage extends React.Component {
 
 
   componentDidMount(){
-    if(hasRoom(this.props.id)){
-      this.fetchRoomSize(this.props.id)
-      this.fetchCharacters(this.props.id)
-    }
-    else Router.push('/menu');
+    hasRoom(this.props.id).then(data=>
+      {
+        console.log("ejgvhb")
+        console.log(data.data)
+        if(data.data){
+          this.fetchRoomSize(this.props.id)
+          this.fetchCharacters(this.props.id)
+        }
+        else {Router.push('/menu')};
+      }
+      
+    )
+    
   }
   
 
   render() {
     return (
     <div className="room">
-      Ready to start
-      <div>Room number: {this.props.id}
-      </div>
-      <div>{this.state.roomSize}</div>
+      <div style={{marginTop:"4vh"}}>Room number: {this.props.id}</div>
+      <div>Number of people: {this.state.roomSize}</div>
+      <table className= "displayTable">
+      <tr className="tableHeader">
+        <td>Role</td>
+        <td>Number</td>
+        <td>Participants</td>
+      </tr>
       {
         this.state.charactersJson?
-        this.state.charactersJson.map((data) =><li>{data[0]}{data[1]}</li>):null
+        
+        this.state.charactersJson.map((data) =>
+        <tr>
+          <td>
+            <div className="displayTableImageSection">
+            {charatersImageMap.get(data[0])}
+            <br/>
+            {data[0]}
+            </div>
+          </td>
+          <td>{data[1]}</td>
+          <td>null</td>
+        </tr>)
+        :null
       }
+      </table>
+      
     </div>
     
     )

@@ -23,7 +23,8 @@ package com.example.demo;
     private static HashMap<String, String> roomSizeMap = new HashMap<String, String>();
     private static HashMap<String, String> roomPublicMap = new HashMap<String, String>();
     private static HashMap<String, HashMap<String,Integer>> idCharactersMap = new HashMap<String,  HashMap<String,Integer>>();
-    private static HashMap<String, HashMap<String,ArrayList<String>>> idCharactersPlayerMap = new HashMap<String, HashMap<String,ArrayList<String>>>();
+    private static HashMap<String, HashMap<String,ArrayList<String>>> realtimeIdCharactersMap = new HashMap<String,  HashMap<String,ArrayList<String>>>();
+    private static HashMap<String, ArrayList<String>> charactersRemainingMap = new HashMap<String, ArrayList<String>>();
 
     public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
@@ -55,6 +56,7 @@ package com.example.demo;
         roomSizeMap.put(encodedString ,size);
         roomPublicMap.put(encodedString ,encodedPublicString);
         ArrayList<String> initilizeStringArray = new ArrayList<String>();
+        realtimeIdCharactersMap.put(encodedString, new HashMap<String,ArrayList<String>>());
         return  encodedString;
     }
 
@@ -79,6 +81,7 @@ package com.example.demo;
     @GetMapping("/putCharacter")
     public String putCharacter(@RequestParam(value = "id") String id, @RequestParam(value = "charactersName") String character , @RequestParam(value = "charactersSize") String charactersSize) {
         System.out.println("IDIDIDID"+"   "+ id);
+        //store at individual character map
         HashMap<String,Integer> initialStringArray = idCharactersMap.get(id);
         if(initialStringArray!=null){
             System.out.println("herereererererer");
@@ -88,14 +91,27 @@ package com.example.demo;
             System.out.println("charactersSize");
             System.out.println(charactersSize);
             newStringArray.put(character,Integer.parseInt(charactersSize));
-            idCharactersMap.put(id,newStringArray);
-            
+            idCharactersMap.put(id,newStringArray);  
+        }
+        
+        //store at array
+        ArrayList<String> remainingCharactesList = charactersRemainingMap.get(id);
+        if(remainingCharactesList!=null){
+            for(int i = 0;i<Integer.parseInt(charactersSize);i++){
+                remainingCharactesList.add(character);
+            }
+        }else{
+            ArrayList<String> tempCharactersList = new ArrayList<String>();
+            tempCharactersList.add(character);
+            charactersRemainingMap.put(id,tempCharactersList);
         }
         System.out.println("idCharactersMap");
+        /*
         System.out.println(idCharactersMap);
         System.out.println("initialStringArray");
         System.out.println(initialStringArray);
-        System.out.println(character);
+        System.out.println(character);*/
+        
         return character;
         /*ArrayList<String> initialStringArray = idCharactersMap.get(id);
         initialStringArray.add(character);
@@ -115,6 +131,39 @@ package com.example.demo;
         System.out.println(roomPublicMap.get(id));
         return ResponseEntity.ok(idCharactersMap.get(id));
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getRemainingCharacters")
+    public ResponseEntity<?> getCharactersRemainingList(@RequestParam(value = "id", defaultValue = "World") String id) {
+        System.out.println("charactersRemainingMap.get(id)");
+        System.out.println(charactersRemainingMap.get(id));
+        return ResponseEntity.ok(charactersRemainingMap.get(id));
+    }
+
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getACharacter")
+    public String getACharacter(@RequestParam(value = "id") String id, @RequestParam(value = "name") String name ) {
+        //remove the character from the list
+        System.out.println("HALLO world");
+        System.out.println(id);
+        System.out.println(charactersRemainingMap);
+        System.out.println(charactersRemainingMap.get(id));
+        String returnCharacter = charactersRemainingMap.get(id).remove(0);
+        System.out.println("HBJNKO");
+        System.out.println(charactersRemainingMap);
+        //add the name to the character
+        if(realtimeIdCharactersMap.get(id).get(returnCharacter)!=null) realtimeIdCharactersMap.get(id).get(returnCharacter).add(name);
+        else{
+            ArrayList<String> tempArray = new ArrayList<String> ();
+            tempArray.add(name);
+            realtimeIdCharactersMap.get(id).put(returnCharacter,tempArray);
+        }
+        return returnCharacter;
+    }
+    
+
 
 
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
-import {hasRoom, getRoomSize,getCharacters} from "../../../components/functions/fetch"
+import {hasRoom, joinACharacter,getCharacters} from "../../../components/functions/fetch"
 
 
 class RoomPage extends React.Component {
@@ -9,7 +9,7 @@ class RoomPage extends React.Component {
     super(props);
     this.state = {
         name: '',
-        roomId:' ',
+        roomId:'',
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -24,23 +24,24 @@ class RoomPage extends React.Component {
     this.setState({roomId: event.target.value});
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     alert('A name was submitted: ' + this.state.name +this.state.roomId);
     event.preventDefault();
-    Router.push('/room/player');
+    var characterData = await joinACharacter(this.state.roomId,this.state.name);
+    Router.push(`/room/player?id=${this.state.roomId}&name=${this.state.name}&character=${characterData.data}`);
   }
 
 
   render() {
     return (
     <div className="room">
-       <form onSubmit={this.handleSubmit}>
+       <form onSubmit={this.handleSubmit} >
         <label>
-          Name:
+          Your Name:
           <input type="text" value={this.state.name} onChange={this.handleNameChange} />
         </label>
         <label>
-          RoomId:
+          Room Id:
           <input type="text" value={this.state.roomId} onChange={this.handleRoomIdChange} />
         </label>
         <input type="submit" value="Submit" />

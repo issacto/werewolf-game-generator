@@ -2,6 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import {hasRoom, getRoomSize,getPublicRoom} from "../../components/functions/fetch"
 import LinkLogo from "../../components/images/link.svg"
+
 class Menu extends React.Component {
     static getInitialProps ({ query }) {
         return { id: query.id,numberOfPeople: query.numberOfPeople}
@@ -34,7 +35,6 @@ class Menu extends React.Component {
     }
     else Router.push('/menu');
   }
-  
 
   next(){
     console.log("numberOfPeople")
@@ -44,7 +44,6 @@ class Menu extends React.Component {
   copyCodeToClipboard = () => {
     var promise = navigator.clipboard.writeText(this.state.publicRoomId)
   }
-  
 
   render() {
     console.log("1234567890",this.props.numberOfPeople)
