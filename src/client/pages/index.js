@@ -12,7 +12,7 @@ export default function Home() {
   
     <div  >
       <Head>
-        <title>Werewolf</title>
+        <title>Werewolf Game Generator</title>
         <link xrel="icon" href="/favicon.ico" />
       </Head>
 
@@ -20,6 +20,7 @@ export default function Home() {
         <h1 className={styles.title}>
          Werewold Game Generator
         </h1>
+        
         
         <WolfLogo width="20%" style={{marginTop:"1%"}}/>
         <br></br>

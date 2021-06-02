@@ -35,17 +35,17 @@ class RoomPage extends React.Component {
   render() {
     return (
     <div className="room">
-       <form onSubmit={this.handleSubmit} >
-        <label>
-          Your Name:
-          <input type="text" value={this.state.name} onChange={this.handleNameChange} />
-        </label>
-        <label>
-          Room Id:
-          <input type="text" value={this.state.roomId} onChange={this.handleRoomIdChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+        <form onSubmit={this.handleSubmit} style={{display:"flex",flexDirection:"column",justifyContent:"center",textAlign:"center",alignItems:"center"}}>
+          <label style={{marginTop:"2.3vh"}}>
+            Your Name:
+            <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+          </label>
+          <label style={{marginTop:"2.3vh"}}>
+            Room Id:
+            <input type="text" value={this.state.roomId} onChange={this.handleRoomIdChange} />
+          </label>
+          <input style={{marginTop:"2.3vh", width:"50%"}} type="submit" value="Submit" />
+        </form>
     </div>
     
     )

@@ -10,6 +10,7 @@ package com.example.demo;
  import java.time.LocalDateTime;  
  import java.text.SimpleDateFormat;  
  import java.util.Date;    
+ import java.util.Random;
  import java.util.ArrayList;
  import java.util.HashMap; 
  import org.springframework.web.bind.annotation.CrossOrigin;
@@ -133,25 +134,26 @@ package com.example.demo;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/getRemainingCharacters")
-    public ResponseEntity<?> getCharactersRemainingList(@RequestParam(value = "id", defaultValue = "World") String id) {
-        System.out.println("charactersRemainingMap.get(id)");
-        System.out.println(charactersRemainingMap.get(id));
-        return ResponseEntity.ok(charactersRemainingMap.get(id));
+    @GetMapping("/getCharacterPlayers")
+    public ResponseEntity<?> getCharacterPlayers(@RequestParam(value = "id") String id,@RequestParam(value = "character") String character) {
+        System.out.println("realtimeIdCharactersMap.get(id)");
+        System.out.println(realtimeIdCharactersMap.get(id));
+        return ResponseEntity.ok(realtimeIdCharactersMap.get(id).get(character));
     }
-
 
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getACharacter")
     public String getACharacter(@RequestParam(value = "id") String id, @RequestParam(value = "name") String name ) {
         //remove the character from the list
-        System.out.println("HALLO world");
+        /*System.out.println("HALLO world");
         System.out.println(id);
         System.out.println(charactersRemainingMap);
-        System.out.println(charactersRemainingMap.get(id));
-        String returnCharacter = charactersRemainingMap.get(id).remove(0);
-        System.out.println("HBJNKO");
+        System.out.println(charactersRemainingMap.get(id));*/
+        Random rand = new Random();
+        int i = rand.nextInt(charactersRemainingMap.get(id).size());
+        String returnCharacter = charactersRemainingMap.get(id).remove(i);
+        //System.out.println("HBJNKO");
         System.out.println(charactersRemainingMap);
         //add the name to the character
         if(realtimeIdCharactersMap.get(id).get(returnCharacter)!=null) realtimeIdCharactersMap.get(id).get(returnCharacter).add(name);
