@@ -1,4 +1,11 @@
-./mvnw spring-boot:run
 
+Backend:
+``` javascript
+./mvnw spring-boot:run
+```
+
+Front end:
+``` javascript
 cd src/client
 npm run dev
+```
