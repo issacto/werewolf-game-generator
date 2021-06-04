@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
+import styles from '../../../styles/Home.module.css'
 import {hasRoom, joinACharacter,getCharacters} from "../../../components/functions/fetch"
-
 
 class RoomPage extends React.Component {
   
@@ -36,15 +36,15 @@ class RoomPage extends React.Component {
     return (
     <div className="room">
         <form onSubmit={this.handleSubmit} style={{display:"flex",flexDirection:"column",justifyContent:"center",textAlign:"center",alignItems:"center"}}>
-          <label style={{marginTop:"2.3vh"}}>
-            Your Name:
-            <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+          <label className = {styles.loginLabel}>
+            Username: &nbsp; &nbsp;
+            <input className = {styles.inputBox} type="text" value={this.state.name} onChange={this.handleNameChange} />
           </label>
-          <label style={{marginTop:"2.3vh"}}>
-            Room Id:
-            <input type="text" value={this.state.roomId} onChange={this.handleRoomIdChange} />
+          <label className = {styles.loginLabel}>
+            Room Code: &nbsp;
+            <input className = {styles.inputBox} type="text" value={this.state.roomId} onChange={this.handleRoomIdChange} />
           </label>
-          <input style={{marginTop:"2.3vh", width:"50%"}} type="submit" value="Submit" />
+          <input className = {styles.submitButton} type="submit" value="Submit" />
         </form>
     </div>
     

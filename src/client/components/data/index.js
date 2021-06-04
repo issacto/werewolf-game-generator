@@ -26,13 +26,13 @@ export const charatersImageMap= new Map([
 
 export const charatersColorMap= new Map([
 
-    ["Wizard","rgb(156, 45, 190)"],
-    ["Cupido","red"],
-    ["Hunter","green"],
-    ["Merchant","blue"],
+    ["Wizard","rgb(153, 87, 98)"],
+    ["Cupido","rgb(127,32,32)"],
+    ["Hunter","rgb(0, 66, 37)"],
+    ["Merchant","rgb(28,48,92)"],
     ["HiddenWolf","white"],
     ["Wolf","black"],
     ["Citizen","rgb(211, 103, 40)"],
-    ["Prophet","grey"]
+    ["Prophet","rgb(174,132,32)"]
 ])
 

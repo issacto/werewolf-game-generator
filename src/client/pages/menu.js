@@ -1,5 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
+import styles from '../styles/Home.module.css'
 import {getRoom,putCharacter} from "../components/functions/fetch"
 import {charatersImageMap,charatersColorMap,charatersList} from "../components/data"
 
@@ -116,12 +117,12 @@ class Menu extends React.Component {
     return (
     <div className="menu">
       <div className="topBar">
-        <p style={{marginRight:"2vh"}}>Required Size: {this.state.numberOfPeople} </p>
-        <p>People chosen: {this.state.counter}</p>
+        <p style={{marginRight:"2vh"}}>Player count: {this.state.numberOfPeople} </p>
+        <p>Classes chosen: {this.state.counter}</p>
       </div>
 
     <div className="middleBar">
-      <p className="middelP">Choose your size: </p>
+      <p className="middelP">Number of Players: </p>
       {this.state.sizeAvailable.map((n) =>
         <p className="middelP" onClick={()=>this.update(n)}>{n}</p>
        )}
@@ -136,17 +137,18 @@ class Menu extends React.Component {
               <p className="MenuLogoTitle" style={{color:charatersColorMap.get(n)}}>{n}</p>
               <div style={{marginTop:"0.1vh",display:"flex",flexDirection:"row"}}>
                 
-              <button onClick={()=>this.changeSize(n,this.state[n]-1,false)}>-</button>
+              <button className = {styles.addSubtractButton} onClick={()=>this.changeSize(n,this.state[n]-1,false)}>-</button>
               <p style={{color:"white",margin:"2vh"}}> {this.state[n]}</p>
-              <button onClick={()=>this.changeSize(n,this.state[n]+1,true)}>+</button>
+              <button className = {styles.addSubtractButton} onClick={()=>this.changeSize(n,this.state[n]+1,true)}>+</button>
               </div>
           </div>
         )}
       </div>
-      <p>Base Case:  2 Citizens + 1 Prophet +1 Wolf</p>
-      
-      <button onClick={()=>this.back()}>back</button>
-      <button onClick={()=>this.confirm()}>confirm</button>
+      <p>By default, there are 2 Citizens, 1 Prophet, and 1 Wolf</p>
+      <div>
+        <button className = {styles.naviButton} style = {{marginRight: "1vw"}} onClick={()=>this.back()}>back</button>
+        <button className = {styles.naviButton} style = {{marginLeft: "1vw"}} onClick={()=>this.confirm()}>confirm</button>
+      </div>
     </div>
     )
   }
