@@ -40,14 +40,16 @@ const Layout = props => (
     <div style={headerStyle}>
       <a href="/">
         <div style={{display:"flex",justifyContent:"center"}}>
-        <p style={{marginRight:"1vh"}}>Werewolf Game Generator </p>
-        <Image src="/logo.svg" width={"40vh"} height={"40vh"}/>
+          <p style={{marginRight:"1vh"}}>Werewolf Game Generator </p>
+          <Image src="/logo.svg" width={"40vh"} height={"40vh"}/>
         </div>
       </a>
     </div>
+
     <div className="Content" style={contentStyle}>
       {props.children}
     </div>
+    
     <footer className={styles.footer} style={footerStyle}>
       <a
         href="https://issacto.com"

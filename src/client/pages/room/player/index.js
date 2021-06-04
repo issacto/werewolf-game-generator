@@ -27,12 +27,9 @@ class RoomPage extends React.Component {
       console.log(res.data)
       var charactersJson =[] 
       for (var prop in res.data) {
-        //console.log("Key:" + prop);
-        //console.log("Value:" + res.data[prop]);
         charactersJson.push([prop,res.data[prop]]);
       }
       this.setState({charactersJson:charactersJson})
-      //this.setState({charactersJson:res.data});
       return res.data;}).catch(err => {console.log("Error");console.log(err); return err})
   };
 
