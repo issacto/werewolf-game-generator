@@ -54,10 +54,9 @@ class RoomPage extends React.Component {
   }
 
   componentDidMount(){
-    //if room id is not accurate then return to menu
+    //if room id is not there then return to menu
     hasRoom(this.props.id).then(data=>
       {
-        console.log("ejgvhb")
         console.log(data.data)
         if(data.data){
           this.fetchRoomSize(this.props.id)

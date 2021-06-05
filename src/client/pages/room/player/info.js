@@ -25,10 +25,39 @@ class RoomPage extends React.Component {
   }
 
   async handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name +". The room id is "+this.state.roomId);
-    event.preventDefault();
-    var characterData = await joinACharacter(this.state.roomId,this.state.name);
-    Router.push(`/room/player?id=${this.state.roomId}&name=${this.state.name}&character=${characterData.data}`);
+    if(this.state.name && this.state.roomId){
+     
+      event.preventDefault();
+      var isRoomExists = false;
+      //check room exist not
+      await hasRoom(this.state.roomId).then(data=>
+        {
+          console.log(data.data)
+          isRoomExists = data.data
+          //room does not exists
+          if(!isRoomExists){
+            alert("Room does not exist")
+            return;
+          };
+        }
+      )
+      console.log("isRoomExists")
+      console.log(isRoomExists)
+      if(isRoomExists){
+        var characterData = await joinACharacter(this.state.roomId,this.state.name);
+        //if room is full
+        if(characterData.data=="full"){
+          alert("Room is full. Characteres are all occupied")
+        }
+        else if(characterData.data=="nameOccupied"){
+          alert("Your input name is used. Please choose another name.")
+        }
+        else{
+          Router.push(`/room/player?id=${this.state.roomId}&name=${this.state.name}&character=${characterData.data}`);
+          alert('A name was submitted: ' + this.state.name +". The room id is "+this.state.roomId);
+        }
+      }
+    } else alert("Please fill in BOTH your name and room code")
   }
 
 

@@ -14,6 +14,7 @@ package com.example.demo;
  import java.util.ArrayList;
  import java.util.HashMap; 
  import org.springframework.web.bind.annotation.CrossOrigin;
+ import java.util.Map;
 
  
  @SpringBootApplication
@@ -150,6 +151,33 @@ package com.example.demo;
         System.out.println(id);
         System.out.println(charactersRemainingMap);
         System.out.println(charactersRemainingMap.get(id));*/
+
+        //check room full not
+        if(charactersRemainingMap.get(id).size()==0){
+            return "full";
+        }
+         
+        //check name used not
+        for ( Map.Entry<String,ArrayList<String> >set : realtimeIdCharactersMap.get(id).entrySet()) {
+		    for(int i = 0 ;i<set.getValue().size();i++){
+                System.out.println("HALLOWORLD");
+                System.out.println(set.getValue().get(i));
+                if(set.getValue().get(i).equals(name)) return "nameOccupied";
+            }
+		}/**
+        boolean isNameOccupied = false;
+        realtimeIdCharactersMap.get(id).forEach((character, nameArrays) -> {
+            for(int i = 0 ;i<nameArrays.size();i++){
+                System.out.println("HALLOWORLD");
+                System.out.println(nameArrays.get(i));
+                if(nameArrays.get(i).equals(name)){
+                    isNameOccupied = true;
+                };
+            }
+        });
+        if(isNameOccupied == true){
+            return "nameOccupied";
+        }*/
         Random rand = new Random();
         int i = rand.nextInt(charactersRemainingMap.get(id).size());
         String returnCharacter = charactersRemainingMap.get(id).remove(i);
