@@ -16,6 +16,19 @@ class RoomPage extends React.Component {
     };
   }
 
+  componentDidMount(){
+    //if room id is not there then return to menu
+    hasRoom(this.props.id).then(data=>
+      {
+        console.log(data.data)
+        if(!data.data){
+          alert("Room does not exist. Please do not alter the url")
+          Router.push('/room/player/info');
+        }
+      }
+    )
+  }
+
   async fetchRoomSize(id){
     await getRoomSize(id).then(res => { 
       console.log(res)
