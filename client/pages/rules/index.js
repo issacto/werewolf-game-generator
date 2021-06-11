@@ -8,7 +8,7 @@ function navigate(name){
 
 export default function Rules() {
     return (
-        <div>
+        <div className = {styles.rulePage}>
             <p className = {styles.ruleTitle} style = {{marginTop: '-1ch'}}>Night Phase</p>
             <p className = {styles.ruleText}>
                 There are several roles that are called on at night that are able to perform actions at night. However, those with a Villager or Hunter card are not awoken to perform these actions at night.

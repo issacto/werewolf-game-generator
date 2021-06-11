@@ -173,6 +173,11 @@
   color: #eaeaea;
 }
 
+.rulePage{
+  max-width: 85%;
+  margin-left: 7.5%;
+}
+
 .ruleTitle{
   font-size: 4ch;
   text-decoration: underline;
