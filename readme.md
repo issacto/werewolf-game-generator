@@ -6,6 +6,6 @@ Backend:
 
 Front end:
 ``` javascript
-cd src/client
+cd client
 npm run dev
 ```

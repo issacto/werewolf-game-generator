@@ -66,8 +66,8 @@ const Layout = props => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        Written by Issac To{' '}
-      </a>
+        Written by Issac To{' '} 
+      </a>and Ken  {/* Add your link here Ken */}
     </footer>
   </div>
 );
