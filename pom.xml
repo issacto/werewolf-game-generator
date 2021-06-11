@@ -94,7 +94,7 @@
 					<configuration>
 						<target>
 						<copy todir="${project.build.directory}/classes/public">
-							<fileset dir="${project.basedir}/client/.next"/>
+							<fileset dir="${project.basedir}/client/build"/>
 						</copy>
 						</target>
 					</configuration>
