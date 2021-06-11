@@ -1,5 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
+import styles from '../styles/Home.module.css'
 import {hasRoom, getRoomSize,getCharacters} from "../../../components/functions/fetch"
 import {charatersImageMap,charatersColorMap} from "../../../components/data"
 
@@ -52,6 +53,7 @@ class RoomPage extends React.Component {
   render() {
     return (
     <div className="room">
+      <p className = {styles.regText}>You have been given the role of</p>
       <h1 style={{color:charatersColorMap.get(this.props.character)}}>{this.props.character} </h1>
       <div>{charatersImageMap.get(this.props.character)}</div>
       <br/>

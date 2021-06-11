@@ -124,7 +124,11 @@ class Menu extends React.Component {
     <div className="middleBar">
       <p className="middelP">Number of Players: </p>
       {this.state.sizeAvailable.map((n) =>
-        <p className="middelP" onClick={()=>this.update(n)}>{n}</p>
+        <p className="numButton" onClick={()=>this.update(n)} 
+        style = {{border: n == this.state.numberOfPeople ? "2px solid #05386B" : "transparent",
+                  borderRadius: "5px", 
+                  backgroundColor: n == this.state.numberOfPeople ? "#05386B" : "transparent",
+                  color: n == this.state.numberOfPeople ? "#EDF5E1" : ""}}>{n}</p>
        )}
     </div>
       
@@ -132,15 +136,15 @@ class Menu extends React.Component {
       <div className="cardBox">
         {charatersList.map((n) =>
           <div className="cardStyle">
-           
-              {charatersImageMap.get(n)}
-              <p className="MenuLogoTitle" style={{color:charatersColorMap.get(n)}}>{n}</p>
-              <div style={{marginTop:"0.1vh",display:"flex",flexDirection:"row"}}>
-                
-              <button className = {styles.addSubtractButton} onClick={()=>this.changeSize(n,this.state[n]-1,false)}>-</button>
-              <p style={{color:"white",margin:"2vh"}}> {this.state[n]}</p>
-              <button className = {styles.addSubtractButton} onClick={()=>this.changeSize(n,this.state[n]+1,true)}>+</button>
-              </div>
+          
+            {charatersImageMap.get(n)}
+            <p className="MenuLogoTitle" style={{color:charatersColorMap.get(n)}}>{n}</p>
+            <div style={{marginTop:"0.1vh",display:"flex",flexDirection:"row"}}>
+              
+            <button className = {styles.addSubtractButton} onClick={()=>this.changeSize(n,this.state[n]-1,false)}>-</button>
+            <p style={{color:"white",margin:"2vh"}}> {this.state[n]}</p>
+            <button className = {styles.addSubtractButton} onClick={()=>this.changeSize(n,this.state[n]+1,true)}>+</button>
+            </div>
           </div>
         )}
       </div>

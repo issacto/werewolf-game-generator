@@ -95,7 +95,8 @@
 
 .highlightLink:hover{
   box-shadow: inset 0 -6.4vh 0 0 #05386B;
-  color: #eaeaea;
+  color: #EDF5E1;
+  border-radius: 5px;
 }
 
 .homeButtonContainer{
@@ -107,7 +108,7 @@
 .naviButton{
   font-family: inherit;
   font-size: 3ch;
-  color: #EDF5E1;
+  color: #05386B;
   background-color: transparent;
   border: 2px solid #05386B;
   border-radius: 5px;
@@ -118,7 +119,7 @@
 
 .naviButton:hover{
   box-shadow: inset 0 -4vh 0 0 #05386B;
-  color: #eaeaea;
+  color: #EDF5E1;
 }
 
 .addSubtractButton{
@@ -170,6 +171,39 @@
 .submitButton:hover{
   box-shadow: inset 0 -6vh 0 0 #05386B;
   color: #eaeaea;
+}
+
+.ruleTitle{
+  font-size: 4ch;
+  text-decoration: underline;
+  line-height: 0ch;
+  padding-top: 1.5ch;
+}
+
+.ruleText{
+  font-size: 3ch;
+}
+
+.ruleList{
+  list-style: circle;
+  font-size: 3ch;
+}
+
+.highlightButton{
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  padding: 0px 0.2vw;
+  transition: all .2s ease-in-out;
+  box-sizing: border-box;
+  text-decoration: none;
+  box-shadow: inset 0 -0.5vh 0 #05386B;
+}
+
+.highlightButton:hover{
+  box-shadow: inset 0 -6.4vh 0 0 #05386B;
+  color: #EDF5E1;
+  border-radius: 5px;
 }
 
 .footer {

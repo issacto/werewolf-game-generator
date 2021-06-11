@@ -21,7 +21,7 @@ export default function Home() {
         </div>
         <p className = {styles.regText}>
           If you need a refresher on the rules of werewolf, click 
-          <a className = {styles.highlightLink} href = "https://www.kcl.ac.uk/" target = "_blank"> here </a>
+          <a className = {styles.highlightLink} href = 'rules' target = "_blank"> here </a>
           for the rule set
         </p>
         <br></br>

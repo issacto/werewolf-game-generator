@@ -4,7 +4,7 @@ import CupidoLogo from "../images/arrows.svg"
 import HunterLogo from "../images/man.svg"
 import MerchantLogo from "../images/merchant.svg"
 import HiddenWolfLogo from "../images/hiddenWolf.svg"
-import WolfLogo from "../images/wolf.svg"
+import WolfLogo from "../images/wolf2.svg"
 import CitizenLogo from "../images/citizen.svg"
 import ProphetLogo from "../images/prophet.svg"
 

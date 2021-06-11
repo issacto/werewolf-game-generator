@@ -1,5 +1,5 @@
 1. Night
-There are several roles that are called on at night to do a night action. However, players with a Villager, Tanner, or Hunter card never wake up at night.
+There are several roles that are called on at night that are able to perform actions at night. However, those with a Villager, Tanner, or Hunter card are not awoken to perform these actions at night.
 
 In addition to having a role card, one player is designated the Announcer and announces each of the roles in order and silently counts to ten after each role is woken up to allow the players with that role to perform their action at night. Use this script with the previously suggested cards:
 
