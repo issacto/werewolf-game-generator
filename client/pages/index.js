@@ -10,8 +10,8 @@ function navigate(name){
 export default function Home() {
   return (
     <div className = "container">
-        {/* <title>Werewolf Game Generator</title> */}
-        {/* <link xrel="icon" href="../components/images/werewolf.svg" /> */}
+        <title>Werewolf Game Generator</title> 
+        <link xrel="icon" href="../components/images/werewolf.svg" /> 
 
       <main className={styles.main}>
         <div className = {styles.titleBox}>

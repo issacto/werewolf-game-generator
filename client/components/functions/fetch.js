@@ -42,23 +42,17 @@ export const  putCharacter = async (id,charactersName, charactersSize) => {
 export const  getCharacters = async (id) => {
     //const promise =axios.get("/api/reviews/comments/"+userData );
     const dataPromise =  await axios.get("http://localhost:8080/getCharacters?id="+id).then((response) => {console.log("response");console.log(response.data);return response}).catch(err => {console.log("Error:");return null})
-    console.log("dataPromise")
-    console.log(dataPromise)
     return dataPromise;
 }
 
 export const  getCharacterPlayers = async (id,character) => {
     //const promise =axios.get("/api/reviews/comments/"+userData );
     const dataPromise =  await axios.get(`http://localhost:8080/getCharacterPlayers?id=${id}&character=${character}`).then((response) => {console.log("response");console.log(response.data);return response}).catch(err => {console.log("Error:");return null})
-    console.log("dataPromise")
-    console.log(dataPromise)
     return dataPromise;
 }
 
 export const joinACharacter  = async (id,name) => {
     //const promise =axios.get("/api/reviews/comments/"+userData );
     const dataPromise =  await axios.get("http://localhost:8080/getACharacter?id="+id+"&name="+name).then((response) => {console.log("response");console.log(response.data);return response}).catch(err => {console.log("Error:");return null})
-    console.log("dataPromise")
-    console.log(dataPromise)
     return dataPromise;
 }
