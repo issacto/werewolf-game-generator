@@ -1,8 +1,8 @@
 import React from 'react'
 import Router from 'next/router'
-import styles from '../styles/Home.module.css'
+import styles from '../../../styles/Home.module.css'
 import {hasRoom, getRoomSize,getCharacters} from "../../../components/functions/fetch"
-import {charatersImageMap,charatersColorMap} from "../../../components/data"
+import {charatersImageMap,charatersColorMap} from "../../../components/data/index"
 
 class RoomPage extends React.Component {
     static getInitialProps ({ query }) {
