@@ -32,13 +32,13 @@ package com.example.demo;
     SpringApplication.run(DemoApplication.class, args);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return String.format("Hello %s!", name);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/getRoom")
     public String getRoom(@RequestParam(value = "size", defaultValue = "World") String size) {
         System.out.println("size");
@@ -62,7 +62,7 @@ package com.example.demo;
         return  encodedString;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/hasRoom")
     public Boolean hasRoom(@RequestParam(value = "id", defaultValue = "World") String id) {
         Boolean isRoomRegistered = false;
@@ -72,14 +72,14 @@ package com.example.demo;
         return isRoomRegistered;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/getRoomSize")
     public String getRoomSize(@RequestParam(value = "id", defaultValue = "World") String id) {
         System.out.println(roomSizeMap.get(id));
         return roomSizeMap.get(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/putCharacter")
     public String putCharacter(@RequestParam(value = "id") String id, @RequestParam(value = "charactersName") String character , @RequestParam(value = "charactersSize") String charactersSize) {
         System.out.println("IDIDIDID"+"   "+ id);
@@ -112,21 +112,21 @@ package com.example.demo;
         return character;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/getPublicRoom")
     public String getPublicRoom(@RequestParam(value = "id", defaultValue = "World") String id) {
         System.out.println(roomPublicMap.get(id));
         return roomPublicMap.get(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/getCharacters")
     public ResponseEntity<?> getCharacters(@RequestParam(value = "id", defaultValue = "World") String id) {
         System.out.println(roomPublicMap.get(id));
         return ResponseEntity.ok(idCharactersMap.get(id));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/getCharacterPlayers")
     public ResponseEntity<?> getCharacterPlayers(@RequestParam(value = "id") String id,@RequestParam(value = "character") String character) {
         System.out.println("realtimeIdCharactersMap.get(id)");
@@ -135,7 +135,7 @@ package com.example.demo;
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://werewolf-issacto.vercel.app:3000")
     @GetMapping("/getACharacter")
     public String getACharacter(@RequestParam(value = "id") String id, @RequestParam(value = "name") String name ) {
         //check room full not
